@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Node.js Course</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/posts">Posts</a></li>
+      <li><a href="/add-post">New Post</a></li>
+      <li><a href="/contacts">Contacts</a></li>
+    </ul>
+  </nav>
+  <article class="post">
+    <div class="info">
+      <span><%= post.createdAt.toLocaleDateString() %></span>
+      <span><%= post.author %></span>
+    </div>
+    <h1><%= post.title %></h1>
+    <p>
+      <%= post.text %>
+    </p>
+    <button class="btn-delete" data-id="<%= post.id %>">
+      <i class="fas fa-trash-alt" data-id="<%= post.id %>"></i>
+    </button>
+  </article>
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const id = e.target?.dataset?.id || null;
+      if (id) {
+        fetch(`/posts/${id}`, {
+          method: 'DELETE'
+        }).then(() => {
+          window.location.href = '/posts';
+        })
+      }
+    })
+  </script>
+</body>
+</html>
