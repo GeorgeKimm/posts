@@ -16,10 +16,7 @@ const app = express();
 // установка ejs в качестве view engine
 app.set("view engine", "ejs");
 
-const PORT = 3000;
-// const password = "0000";
-// const db = `mongodb+srv://george:${password}@cluster0.nehn5.mongodb.net/node-blog?retryWrites=true&w=majority`;
-
+const PORT = 3010;
 // const password = "0000";
 // const db = `mongodb+srv://george:${password}@cluster0.nehn5.mongodb.net/node-blog?retryWrites=true&w=majority`;
 
@@ -55,7 +52,7 @@ app.use(
 // extended: false отменяет расширенный парсинг
 app.use(express.urlencoded({ extended: false }));
 
-// метод static добавляет указанную папку в исключения (т.е. сделать ее общедоступной это значит к ней клиент может получить к ней доступ)
+// метод static добавляет указанную папку в исключения (т.е. сделать ее общедоступной это значит клиент может получить к ней доступ)
 app.use(express.static("styles"));
 
 // методы в express принимают 2 основных параметра
